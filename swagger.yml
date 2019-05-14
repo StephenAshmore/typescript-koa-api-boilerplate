@@ -1,0 +1,22 @@
+swagger: "2.0"
+info:
+  title: typescript-koa-api-boilerplate
+  description: Boilerplate for a koa backend api.
+  version: "1.0.0"
+basePath: /
+schemes:
+  - http
+produces:
+  - application/json
+  - text/plain
+paths:
+  /health:
+    get:
+      operationId: getHealth
+      summary: Check Health
+      description: Check if the service is healthy.
+      responses:
+        200:
+          description: Service is healthy.
+      tags:
+        - Health

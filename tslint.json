@@ -1,0 +1,22 @@
+{
+    "rulesDirectory": [
+        "node_modules/tslint-eslint-rules/dist/rules",
+        "tslint-plugin-prettier"
+    ],
+    "rules": {
+        "prettier": [
+            true,
+            {
+                "printWidth": 100,
+                "tabWidth": 4,
+                "useTabs": false,
+                "semi": true,
+                "singleQuote": true,
+                "trailingComma": "es5",
+                "bracketSpacing": true,
+                "jsxBracketSameLine": false
+            }
+        ]
+    },
+    "extends": ["tslint:latest", "tslint-config-prettier"]
+}

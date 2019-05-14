@@ -1,0 +1,48 @@
+{
+    "name": "typescript-koa-api-boilerplate",
+    "version": "1.0.0",
+    "description": "A minimalist boilerplate for typescript, koa backend api.",
+    "main": "main.ts",
+    "author": "Stephen Ashmore",
+    "license": "MIT",
+    "private": false,
+    "scripts": {
+        "build": "echo building... && yarn run build:lint && yarn run build:ts && echo done!",
+        "build:ts": "tsc",
+        "build:lint": "tslint \"src/**/*.ts\" -e \"**/*.d.ts\"",
+        "clean": "rm -rf bin/",
+        "start": "node bin/main.js",
+        "start:pretty": "node bin/main.js",
+        "start:dev": "yarn run clean && yarn && nodemon -x 'yarn run build && yarn run start:pretty' --watch src/ -L -e ts",
+        "uninstall": "rm -rf node_modules/ && yarn run clean",
+        "prettify": "find ./src/**/ -name \\*.tsx -o -name \\*.ts -o -name //*.css| xargs prettier --find-config-path --write",
+        "precommit": "lint-staged",
+        "test:unit": "jest --collectCoverage"
+    },
+    "devDependencies": {
+        "@types/koa": "^2.0.48",
+        "@types/koa-bodyparser": "^4.2.2",
+        "@types/koa-compress": "^2.0.9",
+        "@types/koa-router": "^7.0.40",
+        "@types/node": "^12.0.1",
+        "jest": "^24.8.0",
+        "nodemon": "^1.19.0",
+        "prettier": "^1.17.1",
+        "ts-jest": "^24.0.2",
+        "tslint": "^5.16.0",
+        "tslint-config-prettier": "^1.18.0",
+        "tslint-eslint-rules": "^5.4.0",
+        "tslint-plugin-prettier": "^2.0.1",
+        "typescript": "^3.4.5"
+    },
+    "dependencies": {
+        "koa": "^2.7.0",
+        "koa-body": "^4.1.0",
+        "koa-bodyparser": "^4.2.1",
+        "koa-compose": "^4.1.0",
+        "koa-compress": "^3.0.0",
+        "koa-router": "^7.4.0",
+        "swagger2": "^1.0.4",
+        "swagger2-koa": "^1.0.3"
+    }
+}
