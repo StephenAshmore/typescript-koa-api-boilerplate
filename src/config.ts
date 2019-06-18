@@ -5,7 +5,7 @@ interface IConfig {
 
 // tslint:disable:no-invalid-template-strings
 const config: IConfig = {
-    name: 'instock-root-cause',
+    name: 'typescript-koa-api-boilerplate',
     port: parseInt(process.env.PORT, 10) || 40404,
 };
 
