@@ -1,12 +1,13 @@
 'use strict';
 
-import * as Koa from 'koa';
-import * as KoaCompose from 'koa-compose';
-import * as compress from 'koa-compress';
+import Koa from 'koa';
+import KoaCompose from 'koa-compose';
+import compress from 'koa-compress';
 import * as swagger from 'swagger2';
 
 import { ui } from 'swagger2-koa';
 
+const swaggerDocument = swagger.loadDocumentSync('./swagger.yml');
 import config from './config';
 
 // routes:
@@ -31,7 +32,9 @@ class Server {
 
         // middleware to compress responses greater than 1kb
         const compressResponse = compress({
-            flush: require('zlib').Z_SYNC_FLUSH,
+            gzip: {
+                flush: require('zlib').Z_SYNC_FLUSH,
+            },
             threshold: 1024,
         });
 
@@ -41,7 +44,7 @@ class Server {
             handleError,
             ExampleRoute.getRoutes(),
             HealthRoute.getRoutes(),
-            ui(swagger.loadDocumentSync('./swagger.yml')),
+            ui(swaggerDocument as swagger.Document, '/swagger'),
         ]);
 
         // load middlewares
@@ -54,6 +57,8 @@ class Server {
     public start() {
         return new Promise<any>((resolve: any, reject: any) => {
             this.server.listen(config.port, () => {
+                // tslint:disable-next-line:no-console
+                console.log(`Server Listening on ${config.port}...`);
                 resolve();
             });
         });

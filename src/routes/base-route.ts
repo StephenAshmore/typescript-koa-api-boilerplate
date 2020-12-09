@@ -1,7 +1,7 @@
 'use strict';
 
-import * as KoaCompose from 'koa-compose';
-import * as Router from 'koa-router';
+import KoaCompose from 'koa-compose';
+import Router from 'koa-router';
 
 abstract class BaseRoute {
     private router: Router;

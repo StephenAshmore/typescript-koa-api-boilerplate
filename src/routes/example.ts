@@ -1,6 +1,6 @@
 'use strict';
 
-import * as Router from 'koa-router';
+import Router from 'koa-router';
 
 import MasterController from '../controllers/master';
 import BaseRoute from './base-route';
